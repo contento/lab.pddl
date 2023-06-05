@@ -1,8 +1,8 @@
 (define (domain greetings)
-    (:requirements :negative-preconditions :typing :conditional-effects)
+    (:requirements :strips :negative-preconditions :typing :conditional-effects)
 
     (:types
-        greeting
+        greeting - object
     )
 
     (:predicates
