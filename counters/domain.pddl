@@ -1,33 +1,33 @@
-; Counter Domain
 (define (domain counter)
   (:requirements :strips :typing)
   (:types
     count
   )
   (:predicates
-    (counter ?n - count)
+    (counter1 ?n - count)
+    (counter2 ?n - count)
     (next ?n1 - count ?n2 - count)
   )
-  (:action increment
+  (:action increment-counter1
     :parameters (?n1 ?n2 - count)
     :precondition (and 
-      (counter ?n1)
+      (counter1 ?n1)
       (next ?n1 ?n2)
     )
     :effect (and 
-      (not (counter ?n1))
-      (counter ?n2)
+      (not (counter1 ?n1))
+      (counter1 ?n2)
     )
   )
-  (:action decrement
+  (:action decrement-counter2
     :parameters (?n1 ?n2 - count)
     :precondition (and 
-      (counter ?n2)
+      (counter2 ?n2)
       (next ?n1 ?n2)
     )
     :effect (and 
-      (not (counter ?n2))
-      (counter ?n1)
+      (not (counter2 ?n2))
+      (counter2 ?n1)
     )
   )
 )

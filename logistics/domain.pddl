@@ -2,8 +2,7 @@
     (:requirements :strips :typing)
 
     (:types
-        city - object
-        location - object
+        city port factory - location
         truck - object
         container - object
     )
@@ -11,7 +10,7 @@
     (:predicates
         (at ?x - truck ?y - location)
         (in ?x - container ?y - truck)
-        (destination ?x - container ?y - location)
+        (empty ?t - truck)
     )
 
     (:action move-truck
@@ -21,14 +20,14 @@
     )
 
     (:action load-container
-        :parameters (?c - container ?t - truck ?l - location)
-        :precondition (and (at ?t ?l) (destination ?c ?l))
-        :effect (and (in ?c ?t) (not (destination ?c ?l)))
+        :parameters (?c - container ?t - truck ?l - port)
+        :precondition (and (at ?t ?l) (empty ?t))
+        :effect (and (in ?c ?t) (not (empty ?t)))
     )
 
     (:action unload-container
-        :parameters (?c - container ?t - truck ?l - location)
+        :parameters (?c - container ?t - truck ?l - factory)
         :precondition (and (in ?c ?t) (at ?t ?l))
-        :effect (and (destination ?c ?l) (not (in ?c ?t)))
+        :effect (and (empty ?t) (not (in ?c ?t)))
     )
 )
