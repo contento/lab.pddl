@@ -1,4 +1,4 @@
-# labs.pddl
+# PDDL Lab
 
 Planning Domain Definition Language [PDDL](https://en.wikipedia.org/wiki/Planning_Domain_Definition_Language) 
 
